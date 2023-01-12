@@ -9,4 +9,5 @@ class MainPage(BasePage):
         login_link.click()
 
     def should_be_login_link(self): # метод, который будет проверять наличие ссылки. Обычно все такие методы-проверки называются shpould_be_(название элемента
-        assert self.is_element_present(By.CSS_SELECTOR, "#login_link_invalid"), "Login link is not presented"
+        assert self.is_element_present(By.CSS_SELECTOR, "#login_link_invalid"), "Login link is not presented" # здесь ссылка неверная --> тест упадет с Exception
+        # assert self.is_element_present(By.CSS_SELECTOR, "#login_link"), "Login link is not presented" # ссылка верная --> тест пройдет успешно
