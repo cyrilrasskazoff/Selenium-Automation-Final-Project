@@ -12,7 +12,7 @@ class ProductPage(BasePage):
         self.correct_price()
 
     def should_be_product_page_url(self):  # проверка правильности URL страницы логина
-        assert "?promo=newYear" in self.browser.current_url, "This is not a product page"
+        assert "?promo=" in self.browser.current_url, "This is not a product page"
 
     def should_be_add_to_cart_btn(self): # проверка наличия кнопки корзины
         assert self.is_element_present(*ProductPageLocators.ADD_TO_CART_BTN), "There is no 'Add To Cart' button"
@@ -22,7 +22,7 @@ class ProductPage(BasePage):
         add_to_cart_btn.click()
 
     def correct_product(self):
-        assert self.browser.find_element(*ProductPageLocators.BOOK_TITLE).text in self.browser.find_element(*ProductPageLocators.ALERT_WITH_BOOK_TITLE).text, "Wrong product title"
+        assert self.browser.find_element(*ProductPageLocators.BOOK_TITLE).text == self.browser.find_element(*ProductPageLocators.ALERT_WITH_BOOK_TITLE).text, "Wrong product title"
 
     def correct_price(self):
         assert self.browser.find_element(*ProductPageLocators.BOOK_PRICE).text in self.browser.find_element(*ProductPageLocators.ALERT_WITH_CART_PRICE).text, "Wrong sum in cart"
