@@ -15,5 +15,6 @@ class ProductPageLocators:
     BOOK_TITLE = (By.XPATH, "//*[@id='content_inner']/article/div[1]/div[2]/h1")
     BOOK_PRICE = (By.XPATH, "//*[@id='content_inner']/article/div[1]/div[2]/p[1]")
     ADD_TO_CART_BTN = (By.CSS_SELECTOR, "#add_to_basket_form > button")
+    # ALERT_WITH_BOOK_TITLE = (By.XPATH, "//*[@id='messages']/div[1]/div/strong")
     ALERT_WITH_BOOK_TITLE = (By.XPATH, "//*[@id='messages']/div[1]/div/strong")
     ALERT_WITH_CART_PRICE = (By.XPATH, "//*[@id='messages']/div[3]")
