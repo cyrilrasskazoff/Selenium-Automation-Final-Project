@@ -18,8 +18,7 @@ def test_guest_should_see_add_to_cart_button(browser):
     product_page.should_be_add_to_cart_btn()
 
 
-@pytest.mark.xfail(reason="we expect this to fail")
-@pytest.mark.parametrize('offer_id', ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
+@pytest.mark.parametrize('offer_id', ["0", "1", "2", "3", "4", "5", "6", pytest.param("7", marks=pytest.mark.xfail(reason="we expect this to fail")), "8", "9"])
 def test_guest_can_add_product_to_basket(browser, offer_id):
     link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{offer_id}"
     # link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
