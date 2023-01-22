@@ -1,5 +1,8 @@
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import math
 
 
@@ -26,6 +29,23 @@ class BasePage:
             self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
+        return True
+
+    def is_not_element_present(self, how, what, timeout=4): # метод, который проверяет, что элемент не появляется на странице в течение заданного времени
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+
+        return False
+
+    def is_disappeared(self, how, what, timeout=4): # метод, который проверяет, что элемент исчезнет со страницы по истечении заданного времени
+        try:
+            WebDriverWait(self.browser, timeout, 1, TimeoutException).\
+                until_not(EC.presence_of_element_located((how, what))) # # 3 аргумент означает частоту опроса, Т.е. WebDriver ждёт 4 секунды и делает запросы каждую секунду
+        except TimeoutException:
+            return False
+
         return True
 
     def solve_quiz_and_get_code(self): # метод для решения уравнения (дополнительное усложнение для практического задания по product_page)
