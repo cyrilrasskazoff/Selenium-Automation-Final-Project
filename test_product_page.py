@@ -30,4 +30,23 @@ def test_guest_can_add_product_to_basket(browser, offer_id):
     product_page.correct_product()
     product_page.correct_price()
 
+
+def test_guest_does_not_see_success_message(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+    product_page = ProductPage(browser, link)
+    product_page.open()
+    product_page.should_not_be_success_message()
+
+
+@pytest.mark.xfail(reason="We know that success message does not disappear")
+def test_success_message_disappears_with_time(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+    product_page = ProductPage(browser, link)
+    product_page.open()
+    product_page.add_to_cart()
+    product_page.correct_product()
+    product_page.should_disappear_success_message()
+
+
+
 # pytest -s -v -rx test_product_page.py
