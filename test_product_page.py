@@ -1,5 +1,22 @@
 from pages.product_page import ProductPage
+from pages.login_page import LoginPage
 import pytest
+
+
+def test_guest_should_see_login_link_on_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    product_page = ProductPage(browser, link)
+    product_page.open()
+    product_page.should_be_login_link()
+
+
+def test_guest_can_go_to_login_page_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    product_page = ProductPage(browser, link)
+    product_page.open()
+    product_page.go_to_login_page()  # выполняем метод страницы — переходим на страницу логина
+    login_page = LoginPage(browser, browser.current_url)  # инициализируем Page Object страницы логина, передаем в конструктор экземпляр драйвера и текущий URL
+    login_page.should_be_login_page()  # проверка URL страницы логина
 
 
 def test_the_url_is_correct(browser):
