@@ -65,6 +65,13 @@ class BasePage:
         assert self.is_element_present(
             *BasePageLocators.LOGIN_LINK), "Login link is not presented"  # * указывает на то, что мы передали именно пару, и этот кортеж нужно распаковать.
 
+    def go_to_basket_page(self):  # метод, который будет проверять переход по ссылке на страницу корзины
+        view_basket_button = self.browser.find_element(*BasePageLocators.VIEW_BASKET_BUTTON)
+        view_basket_button.click()
+
+    def should_be_basket_link(self):
+        assert self.is_element_present(*BasePageLocators.VIEW_BASKET_BUTTON), "There is no basket page link"
+
     def solve_quiz_and_get_code(
             self):  # метод для решения уравнения (дополнительное усложнение для практического задания по product_page)
         alert = self.browser.switch_to.alert
