@@ -1,15 +1,21 @@
 # вынос селекторов во внешнюю переменную
+# каждый селектор — это пара: как искать и что искать
 from selenium.webdriver.common.by import By
 
 
 class BasePageLocators:
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link") # каждый селектор — это пара: как искать и что искать
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     VIEW_BASKET_BUTTON = (By.XPATH, "//*[@id='default']/header/div[1]/div/div[2]/span/a")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class LoginPageLocators:
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
+    REG_FORM_EMAIL_ADDRESS = (By.CSS_SELECTOR, "#id_registration-email")
+    REG_FORM_PSW = (By.CSS_SELECTOR, "#id_registration-password1")
+    REG_FORM_CONFIRM = (By.CSS_SELECTOR, "#id_registration-password2")
+    REG_FORM_SIGN_UP = (By.CSS_SELECTOR, "#register_form > button")
 
 
 class ProductPageLocators:
