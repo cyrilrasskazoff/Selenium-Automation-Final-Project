@@ -22,10 +22,12 @@ class ProductPage(BasePage):
         add_to_cart_btn.click()
 
     def correct_product(self):
-        assert self.browser.find_element(*ProductPageLocators.BOOK_TITLE).text == self.browser.find_element(*ProductPageLocators.ALERT_WITH_BOOK_TITLE).text, "Wrong product title"
+        assert self.browser.find_element(*ProductPageLocators.BOOK_TITLE).text == self.browser.find_element(
+            *ProductPageLocators.ALERT_WITH_BOOK_TITLE).text, "Wrong product title"
 
     def correct_price(self):
-        assert self.browser.find_element(*ProductPageLocators.BOOK_PRICE).text in self.browser.find_element(*ProductPageLocators.ALERT_WITH_CART_PRICE).text, "Wrong sum in cart"
+        assert self.browser.find_element(*ProductPageLocators.BOOK_PRICE).text in self.browser.find_element(
+            *ProductPageLocators.ALERT_WITH_CART_PRICE).text, "Wrong sum in cart"
 
     def should_not_be_success_message(self): # упадет, как только увидит искомый элемент
         assert self.is_not_element_present(*ProductPageLocators.ALERT_WITH_BOOK_TITLE), \
