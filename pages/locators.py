@@ -3,7 +3,7 @@
 from selenium.webdriver.common.by import By
 
 
-class BasePageLocators:
+class MainPageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     VIEW_BASKET_BUTTON = (By.XPATH, "//*[@id='default']/header/div[1]/div/div[2]/span/a")
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
