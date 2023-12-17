@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 
 
 class ProductPage(BasePage):
-    def should_be_product_page(self,):
+    def should_be_product_page(self):
         self.should_be_product_page_url()
         self.should_be_add_to_cart_btn()
         self.add_to_cart()
