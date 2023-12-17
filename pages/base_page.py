@@ -5,7 +5,8 @@ from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from .locators import MainPageLocators
+# from .locators import MainPageLocators #- transferred MainPageLocators to BasePageLocators
+from .locators import BasePageLocators
 import math
 
 # добавим конструктор — метод, который вызывается, когда мы создаем объект. В него в качестве параметров мы передаем
@@ -54,7 +55,7 @@ class BasePage:
 
     def go_to_login_page(self):  # метод, который будет проверять переход по ссылке на страницу логина
         login_link = self.browser.find_element(
-            *MainPageLocators.LOGIN_LINK)  # * указывает на то, что мы передали именно пару, и этот кортеж нужно
+            *BasePageLocators.LOGIN_LINK)  # * указывает на то, что мы передали именно пару, и этот кортеж нужно
         # распаковать.
         login_link.click()
 
@@ -65,19 +66,19 @@ class BasePage:
     # более сложная реализация (с пом. assert, Exceptions) метода выше
     def should_be_login_link(self):
         assert self.is_element_present(
-            *MainPageLocators.LOGIN_LINK), "Login link is not presented"  # * указывает на то, что мы передали именно
+            *BasePageLocators.LOGIN_LINK), "Login link is not presented"  # * указывает на то, что мы передали именно
         # пару, и этот кортеж нужно распаковать.
 
     def should_be_authorized_user(self): # проверка авторизации пользователя
-        assert self.is_element_present(*MainPageLocators.USER_ICON), "User icon is not presented," \
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
                                                                      " probably unauthorised user"
 
     def go_to_basket_page(self):  # метод, который будет проверять переход по ссылке на страницу корзины
-        view_basket_button = self.browser.find_element(*MainPageLocators.VIEW_BASKET_BUTTON)
+        view_basket_button = self.browser.find_element(*BasePageLocators.VIEW_BASKET_BUTTON)
         view_basket_button.click()
 
     def should_be_basket_link(self):
-        assert self.is_element_present(*MainPageLocators.VIEW_BASKET_BUTTON), "There is no basket page link"
+        assert self.is_element_present(*BasePageLocators.VIEW_BASKET_BUTTON), "There is no basket page link"
 
     def solve_quiz_and_get_code(self):  # метод для решения уравнения (дополнительное усложнение для product_page)
         alert = self.browser.switch_to.alert
