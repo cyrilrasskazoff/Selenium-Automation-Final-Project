@@ -82,7 +82,8 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
 
 @pytest.mark.registered_user
 class TestUserAddToBasketFromProductPage:
-    @pytest.fixture(scope="function", autouse=True)
+    @pytest.fixture(scope="function", autouse=True) # объединение общих ф-ций для класса (setup/teardown),
+    # чтобы не повторять код для каждого теста в классе
     def setup(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
         product_page = ProductPage(browser, link)
