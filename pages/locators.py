@@ -29,3 +29,9 @@ class ProductPageLocators:
 class BasketPageLocators:
     ITEMS_IN_BASKET = (By.XPATH, "//*[@id='content_inner']/div[1]/div/h2")
     EMPTY_BASKET_STATE = (By.XPATH, "//*[@id='content_inner']/p")
+
+
+class BasePageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    VIEW_BASKET_BUTTON = (By.XPATH, "//*[@id='default']/header/div[1]/div/div[2]/span/a")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
