@@ -80,6 +80,8 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     basket_page.should_be_empty_basket_text()
 
 
+# код ниже - это всего лишь демонстрация применения группировки тестов и сетапа. В реальной жизни так не делают.
+# подробнее см: https://stepik.org/lesson/201964/step/13?unit=176022
 @pytest.mark.registered_user
 class TestUserAddToBasketFromProductPage:
     @pytest.fixture(scope="function", autouse=True) # объединение общих ф-ций для класса (setup/teardown),
